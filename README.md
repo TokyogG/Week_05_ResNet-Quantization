@@ -165,3 +165,54 @@ Even under ideal CPU conditions, INT8 inference on general-purpose processors de
 This motivates the transition to dedicated inference accelerators, where INT8 execution is the native fast path rather than an optimization layer.
 
 Day 04 therefore serves as the final CPU benchmark gate before introducing Hailo-based deployment in the following phase of the bootcamp.
+
+Day 05 — Week 05 Wrap-Up & Transition to Accelerators
+Purpose
+
+Day 05 consolidates the findings from Week 05 and frames the transition from CPU-based inference to dedicated edge accelerators.
+
+Rather than introducing new tooling, this day focuses on system-level understanding: what quantization can and cannot solve on general-purpose CPUs, and why accelerators such as Hailo are necessary for real-time edge AI workloads.
+
+Key Lessons from Week 05
+
+Quantization is mandatory, but not sufficient
+INT8 quantization reduces memory footprint and can improve latency, but gains on CPU are highly model- and backend-dependent.
+
+Backend choice matters as much as precision
+On ARM platforms, QNNPACK enables modest INT8 gains, while x86-oriented backends (e.g., oneDNN INT8) are ineffective without appropriate vector hardware.
+
+Determinism is a system property
+Reliable benchmarking required explicit control of CPU frequency, scheduling, threading, and thermal state. Once the execution environment was locked, Python proved sufficient as an orchestration layer.
+
+CPU optimization has diminishing returns
+Even under ideal conditions, optimized INT8 inference on the Pi 5 CPU delivers incremental improvements, not step-change performance.
+
+Why Accelerators Are Required
+
+Week 05 demonstrates that general-purpose CPUs are fundamentally limited for sustained, low-latency edge inference. While quantization improves efficiency, it does not eliminate:
+
+instruction overhead
+
+cache contention
+
+operator scheduling costs
+
+CPU power inefficiency at scale
+
+Dedicated accelerators invert this trade-off by making INT8 execution the native fast path, rather than an optimization layered on top of FP32 execution.
+
+Transition to Next Phase
+
+With CPU baselines fully characterized and quantization behavior understood, the bootcamp transitions to accelerator-based inference.
+
+The next phase introduces:
+
+ONNX export and graph-level deployment
+
+Hailo model compilation and runtime execution
+
+CPU vs NPU latency, throughput, and utilization comparisons
+
+Real-time inference pipelines decoupled from Python execution
+
+Week 05 therefore serves as the quantitative and conceptual foundation for Hailo-based deployment in the following weeks.
