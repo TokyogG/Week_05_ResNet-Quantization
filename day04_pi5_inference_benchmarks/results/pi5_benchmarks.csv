@@ -1,0 +1,2 @@
+model,engine,threads_intraop,threads_interop,pin_core,iters,warmup,calib_steps,input_shape,fp32_mean_ms,fp32_p50_ms,fp32_p90_ms,fp32_p95_ms,fp32_p99_ms,fp32_fps,int8_mean_ms,int8_p50_ms,int8_p90_ms,int8_p95_ms,int8_p99_ms,int8_fps,speedup_fp32_over_int8
+mobilenet_v2,qnnpack,1,1,2,200,50,50,"(1, 3, 224, 224)",58.489716155,58.374379,58.7992212,58.922679949999996,59.77625269999999,17.095546508364784,46.70799592,46.7091095,46.947490499999994,47.0164038,47.06356637,21.40750993051758,1.252242041280884
